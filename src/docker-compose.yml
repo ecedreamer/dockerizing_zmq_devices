@@ -2,7 +2,7 @@ version: "3.9"
 services:
   streamer:
     build: .
-    command: bash -c "rm -f services/logs/streamer.log  && python services/device_streamer.py"
+    command: python services/device_streamer.py
     volumes:
       - .:/app
     ports:

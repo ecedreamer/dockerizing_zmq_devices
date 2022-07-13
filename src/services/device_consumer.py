@@ -22,9 +22,9 @@ def consumer():
         while True:
             data = consumer_receiver.recv_json()
             if data['cmd'] == "#start#":
-                logger.info(f"Starting receiving data from {data['producer']}") 
+                logger.info(f"\nStarting receiving data from {data['producer']}") 
             if data['cmd'] == "#end#":
-                logger.info(f"Received all successfully from {data['producer']}") 
+                logger.info(f"\nReceived all successfully from {data['producer']}") 
             
 
     except Exception as e:
