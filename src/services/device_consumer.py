@@ -20,13 +20,12 @@ def consumer():
     try:
         consumer_receiver.connect("tcp://streamer:8890")
         while True:
-            work = consumer_receiver.recv_json()
-            data = work['num']
-            result = { 'consumer' : consumer_id, 'num' : data}
-            msg_count += 1
-            if msg_count == config.get("message_count"):
-                logger.info(f"All {msg_count} messages received")
-                sys.exit(0)
+            data = consumer_receiver.recv_json()
+            if data['cmd'] == "#start#":
+                logger.info(f"Starting receiving data from {data['producer']}") 
+            if data['cmd'] == "#end#":
+                logger.info(f"Received all successfully from {data['producer']}") 
+            
 
     except Exception as e:
         logger.info(f"Exception at Consumer: {e}")

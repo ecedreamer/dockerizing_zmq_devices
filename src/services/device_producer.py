@@ -9,10 +9,11 @@ def producer():
     zmq_socket = context.socket(zmq.PUSH)
     try:
         zmq_socket.connect("tcp://streamer:8889")
-        # Start your result manager and workers before you start your producers
+        zmq_socket.send_json({"cmd": "#start#", "producer": "docker_producer"})
         for num in range(message_count):
             work_message = { 'num' : num }
             zmq_socket.send_json(work_message)
+        zmq_socket.send_json({"cmd": "#end#", "producer": "docker_producer"})
     except Exception as e:
         logger.info(f"Exception at Producer: {e}")
 
