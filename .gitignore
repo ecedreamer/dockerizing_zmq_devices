@@ -3,3 +3,4 @@ py_venv_311/
 pypy*/
 *.pyc
 __pycache__/
+venv/
