@@ -4,3 +4,4 @@ pypy*/
 *.pyc
 __pycache__/
 venv/
+logs/

@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  forwarder:
+    build: .
+    command: python services/device_forwarder.py
+    volumes:
+      - .:/app
+    ports:
+      - 6666:7779
+
+  subscriber:
+    build: .
+    command: python services/device_subscriber.py
+    volumes:
+      - .:/app
+      - ../forwarder_config.json:/config/forwarder_config.json
+
+    depends_on:
+      - forwarder
+
+  publisher:
+    build: .
+    command: python services/device_publisher.py
+    volumes:
+      - .:/app
+      - ../forwarder_config.json:/config/forwarder_config.json
+    depends_on:
+      - forwarder
