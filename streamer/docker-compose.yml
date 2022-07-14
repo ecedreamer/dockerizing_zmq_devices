@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  streamer:
+    build: .
+    command: python services/device_streamer.py
+    volumes:
+      - .:/app
+    ports:
+      - 5555:8889
+
+  consumer:
+    build: .
+    command: python services/device_consumer.py
+    volumes:
+      - .:/app
+      - ../config_files/streamer_config.json:/config/streamer_config.json
+
+    depends_on:
+      - streamer
+
+  producer:
+    build: .
+    command: python services/device_producer.py
+    volumes:
+      - .:/app
+      - ../config_files/streamer_config.json:/config/streamer_config.json
+      - /var/run/docker.sock:/tmp/docker.sock
+    depends_on:
+      - streamer
