@@ -7,4 +7,5 @@ In this repository, we will dockerize 3 ZMQ Devices namely Queue, Forwarder and 
 ## SIGNAL ##
 
 $ docker compose kill -s SIGHUP producer
+
 $ docker kill --signal="SIGHUP" streamer-producer
