@@ -18,7 +18,7 @@ PRODUCER: Sources or Producers PUSH the events to the Source port of streamer de
 CONSUMER: Sinks or Consumers(Workers) PULL the events from the sink port and process them further according to the functional requirements.  
 
 
-### To make extremely fast streamer device, I have choosed pypy:3.9 as an image. To run these containers, go to the streamer folder in the terminal and type following command. 
+### To make extremely fast streamer device, I have chosen pypy:3.9 as an image. To run these containers, go to the streamer folder in the terminal and type following command. 
 ``` 
 $ docker compose up
 ```
