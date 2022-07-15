@@ -1,5 +1,5 @@
 # Dockerizing ZMQ Devices #
-In this repository, we will dockerize 3 ZMQ Devices namely Queue, Forwarder and Streamer.
+In this repository, we will dockerize 2 ZMQ Devices namely Forwarder and Streamer.
 
 ## Dockerizing STREAMER ##
 
