@@ -21,6 +21,11 @@ CONSUMER: Sinks or Consumers(Workers) PULL the events from the sink port and pro
 ### To make extremely fast streamer device, I have chosen pypy:3.9 as an image. To run these containers, go to the streamer folder in the terminal and type following command. 
 ``` 
 $ docker compose up
+
+ To run multiple consumer(worker) in parallel
+ 
+$ docker compose up --scale consumer=2
+
 ```
 ### OUTPUT ###
 ```
