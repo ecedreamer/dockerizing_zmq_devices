@@ -25,4 +25,5 @@ services:
       - .:/app
       - ../forwarder_config.json:/config/forwarder_config.json
     depends_on:
+      - subscriber
       - forwarder

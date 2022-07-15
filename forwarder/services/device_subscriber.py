@@ -13,12 +13,12 @@ def subscriber():
     # recieve work
     subscriber_receiver = context.socket(zmq.SUB)
     try:
-        subscriber_receiver.setsockopt(zmq.SUBSCRIBE, b"9")
+        subscriber_receiver.setsockopt_string(zmq.SUBSCRIBE, "")
         subscriber_receiver.connect("tcp://forwarder:7790")
         count = 0
         while True:
             count += 1
-            data = subscriber_receiver.recv().decode()
+            data = subscriber_receiver.recv_string()
             data_list = data.split("#")
             if "start" in data_list[0]:
                 print(f"\nStarting receiving data from {data_list[-1]}") 

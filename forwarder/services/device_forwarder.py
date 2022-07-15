@@ -7,7 +7,7 @@ def main():
         # Socket facing publishers
         publisher = context.socket(zmq.SUB)
         publisher.bind("tcp://*:7779")
-        publisher.setsockopt(zmq.SUBSCRIBE, b"")
+        publisher.setsockopt_string(zmq.SUBSCRIBE, "")
         # Socket facing subscribers
         subscriber = context.socket(zmq.PUB)
         subscriber.bind("tcp://*:7790")

@@ -6,11 +6,12 @@ def publisher():
     context = zmq.Context()
     zmq_socket = context.socket(zmq.PUB)
     try:
+        time.sleep(5)
         zmq_socket.connect("tcp://forwarder:7779")
-        zmq_socket.send("9 start#docker_publisher".encode())
+        zmq_socket.send_string("9 start#docker_publisher")
         for num in range(message_count):
-            zmq_socket.send(f"9 Count is {num}".encode())
-        zmq_socket.send("9 end#docker_publisher".encode())
+            zmq_socket.send_string(f"Count is {num}")
+        zmq_socket.send_string("end#docker_publisher")
     except Exception as e:
         print(f"Exception at Publisher: {e}")
 
